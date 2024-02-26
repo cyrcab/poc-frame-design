@@ -1,15 +1,23 @@
 import { Box, Container, Typography } from '@mui/material'
 import { DropZone } from './components/DropZone'
-import { useState } from 'react'
+import { Dispatch, SetStateAction } from 'react'
 import { MyFiles } from '../../entities/files'
 
-interface ImagesDropProps {}
+interface ImagesDropProps {
+  images: MyFiles[]
+  setImages: Dispatch<SetStateAction<MyFiles[]>>
+}
 
-export const ImagesDrop: React.FC<ImagesDropProps> = () => {
-  const [images, setImages] = useState<MyFiles[]>([])
-
+export const ImagesDrop: React.FC<ImagesDropProps> = ({ images, setImages }) => {
   return (
-    <Container>
+    <Container
+      style={{
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+      }}
+    >
       <Box sx={{ border: '1px solid grey', padding: 2 }} textAlign="center">
         <Typography variant="h5">Images list</Typography>
       </Box>
@@ -18,8 +26,8 @@ export const ImagesDrop: React.FC<ImagesDropProps> = () => {
           border: '1px solid grey',
           padding: 1,
           display: 'flex',
+          height: '100%',
           flexWrap: 'wrap',
-          height: '40vh',
           overflow: 'auto',
         }}
       >

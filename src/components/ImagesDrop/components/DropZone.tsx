@@ -18,6 +18,10 @@ export const DropZone: React.FC<DropZoneProps> = ({ setImages }) => {
           id: Math.random(),
           src: URL.createObjectURL(acceptedFiles[0]),
           alt: 'placeholder 1',
+          isDragging: false,
+          x: 0,
+          y: 0,
+          rotation: 0,
           ...acceptedFiles[0],
         },
       ])
